@@ -2,6 +2,7 @@
 This project is a Node.js web application that is automatically deployed to an AWS EC2 instance using GitHub Actions and Ansible.
 
 Key Components:
+
 Node.js app: The main backend application written in JavaScript.
 
 GitHub Actions: Used for continuous integration and deployment (CI/CD).
