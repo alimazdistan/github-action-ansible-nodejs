@@ -1,2 +1,2 @@
 [webservers]
-ec2-1 ansible_host=35.170.71.71 ansible_user=ubuntu
+ec2-1 ansible_host=44.200.32.55 ansible_user=ubuntu
