@@ -9,11 +9,7 @@
         state: present
         update_cache: yes
 
-    - name: Install Nginx
-      apt:
-        name: nginx
-        state: present
-        update_cache: yes
+    
 
     - name: Create app directory
       file:
@@ -44,37 +40,4 @@
       args:
         executable: /bin/bash
 
-    - name: Configure Nginx reverse proxy
-      copy:
-        dest: /etc/nginx/sites-available/nodeapp
-        content: |
-          server {
-              listen 80;
-              server_name _;
-
-              location / {
-                  proxy_pass http://localhost:3000;
-                  proxy_http_version 1.1;
-                  proxy_set_header Upgrade $http_upgrade;
-                  proxy_set_header Connection 'upgrade';
-                  proxy_set_header Host $host;
-                  proxy_cache_bypass $http_upgrade;
-              }
-          }
-
-    - name: Enable Nginx config
-      file:
-        src: /etc/nginx/sites-available/nodeapp
-        dest: /etc/nginx/sites-enabled/nodeapp
-        state: link
-        force: yes
-
-    - name: Remove default Nginx site
-      file:
-        path: /etc/nginx/sites-enabled/default
-        state: absent
-
-    - name: Restart Nginx
-      service:
-        name: nginx
-        state: restarted
+    
